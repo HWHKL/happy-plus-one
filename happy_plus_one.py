@@ -1,10 +1,10 @@
+import sys
 import requests
 from bs4 import BeautifulSoup
- 
 #Server酱推送模块，PUSH_KEY替换自己的
 def send_message_fangtang(_item,_message):
-        PUSH_KEY = 'SCT24080TjB2dGztI01cxxB89nFXBCrZc'  #
-        api = 'https://sctapi.ftqq.com/' + PUSH_KEY + '.send'
+        token = sys.argv[1]
+        api = 'https://sctapi.ftqq.com/' + token + '.send'
         _d = {
                 "title": _item,
                 "desp": _message
@@ -33,7 +33,7 @@ for tr in tr:
         time=td[5].string.replace(" ","").replace('\n', '').replace('\r', '')
         oringin=td[6].find('span').string.replace(" ","").replace('\n', '').replace('\r', '')
          
-        sp=str(td[6]).split('"')
+        sp=str(td[6]).分屏('"')
         http=sp[3]
         desp="序号："+str(i)+'\n\r'+"游戏名称："+name+'\n\r'+"类型："+gametype+'\n\r'+"开始时间："+start+'\n\r'+"结束时间："+end+'\n\r'+"是否永久："+time+'\n\r'+"平台："+oringin+'\n\r'+"链接："+http+'\n\r'
  
