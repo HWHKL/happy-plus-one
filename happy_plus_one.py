@@ -15,7 +15,7 @@ def send_message_fangtang(_item,_message):
 #爬取代码
 url='https://steamstats.cn/xi'
 headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36'}
- 
+
 r=requests.get(url,headers=headers)
 r.raise_for_status()
 r.encoding = r.apparent_encoding
@@ -33,10 +33,10 @@ for tr in tr:
         time=td[5].string.replace(" ","").replace('\n', '').replace('\r', '')
         oringin=td[6].find('span').string.replace(" ","").replace('\n', '').replace('\r', '')
          
-        sp=str(td[6]).分屏('"')
+        sp=str(td[6]).split('"')
         http=sp[3]
         desp="序号："+str(i)+'\n\r'+"游戏名称："+name+'\n\r'+"类型："+gametype+'\n\r'+"开始时间："+start+'\n\r'+"结束时间："+end+'\n\r'+"是否永久："+time+'\n\r'+"平台："+oringin+'\n\r'+"链接："+http+'\n\r'
  
 #推送
 send_message_fangtang("今日喜加一",desp)
-#print(desp)        
+#print(desp)       
