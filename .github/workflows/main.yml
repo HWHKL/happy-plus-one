@@ -1,4 +1,4 @@
-名字: Happy_Plus_One
+name: Happy_Plus_One
 on:
   workflow_dispatch:
    
@@ -8,16 +8,16 @@ jobs:
   my_job:
     runs-on: ubuntu-latest
     steps:
-      - 名字: 'checkout codes'  #检测代码
+      - name: 'checkout codes'  #检测代码
         uses: actions/checkout@v2
-      - 名字: 'set up python'  #配置python
+      - name: 'set up python'  #配置python
         uses: actions/setup-python@v2
         with:
          python-version: ${{ matrix.python-version }}
-      - 名字: requirements  #配置库
+      - name: requirements  #配置库
         run: |
          python -m pip install --upgrade pip
          pip install beautifulsoup4
-      - 名字: 'Epic/steam happy +1'  #运行py
+      - name: 'Epic/steam happy +1'  #运行py
         run: |
           python happy_plus_one.py ${{ secrets.TOKEN }}
